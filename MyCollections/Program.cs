@@ -8,6 +8,8 @@ namespace MyCollections
     {
         static void Main(string[] args)
         {
+
+            /*
             PatientService patientService = new PatientService();
 
             IEnumerable<Patient> result =  patientService.GetPatients();
@@ -68,8 +70,83 @@ namespace MyCollections
 
             IDictionary dictionary = new Hashtable();
 
+            */
+            
+            PatientService service = new PatientService();
+
+            service.GetPatients();
+
+            var result = service.DeletePatient(3);
 
 
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.Id);
+            }
+            
+
+
+
+
+            /**
+            List<Patient> patients2 = new List<Patient>()
+            {
+                new Patient() {Id = 1, Name = "Shavkatjon", SSN = 12312312 },
+                new Patient() {Id = 2, Name = "Shuxratbek", SSN = 656562312 },
+                new Patient() {Id = 3, Name = "Mirkozim", SSN = 43542312 },
+                new Patient() {Id = 4, Name = "Akramjon", SSN = 23412312 },
+                new Patient() {Id = 5, Name = "Sardor", SSN = 23127689 },
+                new Patient() {Id = 6, Name = "Muxlisa", SSN = 67872312 },
+                new Patient() {Id = 7, Name = "Alisa", SSN = 563752 },
+            };
+
+            patients2.Remove(new Patient()
+            {
+                Id = 1,
+                Name = "Shavkatjon",
+                SSN = 12312312
+            });
+
+            foreach (Patient pat in patients2)
+            {
+                Console.WriteLine(pat.Name);
+            }
+            */
+
+
+            /**
+            object a = "Item";
+            object b = "Item";
+
+            Console.WriteLine(a == b);
+            Console.WriteLine(a.Equals(b));
+
+            object c = "Item";
+            object d = new string("Item");
+
+            Console.WriteLine(c == d);
+            Console.WriteLine(c.Equals(d));
+
+
+
+
+            var res1 = new Patient()
+            {
+                Id = 1,
+                Name = "Shavkatjon",
+                SSN = 12312312
+            };
+
+            var res2 = new Patient()
+            {
+                Id = 1,
+                Name = "Shavkatjon",
+                SSN = 12312312
+            };
+
+
+            Console.WriteLine(res1 == res2);
+            */
         }
     }
 }

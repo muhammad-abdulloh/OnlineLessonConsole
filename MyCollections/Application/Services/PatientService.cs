@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyCollections.Application.Services
 {
@@ -44,6 +45,7 @@ namespace MyCollections.Application.Services
 
         public Patient UpdatePatient()
         {
+            // update ni qilish 
             return new Patient();
         }
 
@@ -52,15 +54,29 @@ namespace MyCollections.Application.Services
             return new Patient();
         }
 
-        public void DeletePatient()
+        public IEnumerable<Patient> DeletePatient(int Id)
         {
-            
+            Patient patient = new Patient();
+
+            List<Patient> items = new List<Patient>();
+
+            foreach (Patient patn in patients)
+            {
+                if (patn.Id != Id)
+                {
+                    items.Add(patn);
+                }
+            }
+
+            patients.Clear();
+
+            return items;
         }
 
         public IEnumerable<Patient> GetPatients()
         {
 
-            IEnumerable<Patient> patients2 = new List<Patient>()
+            List<Patient> patients2 = new List<Patient>()
             {
                 new Patient() {Id = 1, Name = "Shavkatjon", SSN = 12312312 },
                 new Patient() {Id = 2, Name = "Shuxratbek", SSN = 656562312 },
@@ -72,10 +88,7 @@ namespace MyCollections.Application.Services
             };
 
             patients.AddRange(patients2);
-           
             return patients;
         }
-
-
     }
 }
